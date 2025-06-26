@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event handler</title>
+</head>
+<body>
+    <h1>Learn javascript with me</h1>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+//     // setTimeout(function(){
+//     // document.querySelector('h1').innerText="Learn Javascript with Aditya"
+
+//     // },2000)
+
+//     //Another Way
+//     const changetext=function(){
+//     document.querySelector('h1').innerText="Learn Javascript with Aditya"
+//     }
+   
+//     const changeMe=setTimeout(changetext,2000);
+//    document.querySelector('#stop').addEventListener('click',function(e){
+//     clearTimeout(changeMe);
+       
+//    })
+// console.log("start")
+//    setTimeout(()=>{
+//     console.log("Done after two second");
+//    },2000)
+//    console.log("end");
+
+const h1=document.querySelector("h1");
+
+
+const changeme=setTimeout(()=>{
+    h1.innerHTML="Learn javascript from Coding Ninja"
+
+},2000)
+
+const stop=document.querySelector('#stop')
+
+stop.addEventListener('click',(e)=>{
+    clearTimeout(changeme);
+
+    })
+
+
+
+
+  
+
+  
+   
+</script>
+</html>

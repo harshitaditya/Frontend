@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <button id="orange">orange</button>
+    <button id="green">Green</button>
+
+</body>
+<script>
+    //Lexical scoping
+    function outer(){
+        let username="Aditya"
+        function inner1(){
+            console.log("Inner function 1:",username);            //here we can see that username is access by inner1 method because of lexical scoping.
+                                                                 //Lexical Scoping:
+                                                                // Variables defined inside a function (like username in the outer function) are only accessible within that function and any functions defined inside it.
+                                                               // Both inner1 and inner2 functions can access the username variable because they are defined within the same lexical scope as username.
+         } 
+        function inner2(){
+            console.log("Inner function 2:",username);
+        }
+        inner1();
+        inner2();
+    }
+    outer();
+    // console.log(username);   it will show error because username is define under the scope.
+
+
+
+    //closure
+
+    function  anotherouter(){
+        let name="Anurag"
+        function anotherinner(){              //A closure is created when a function (like anotherinner) "remembers" the variables from its surrounding scope (in this case, name from anotherouter) even after that scope has finished executing.
+            console.log("Inner:",name);
+        } 
+        return anotherinner;             //The anotherouter function returns the anotherinner function, but does not execute it immediately. Instead, it passes the function itself as a value.
+
+    }
+    const myfunc=anotherouter();       //The line const myfunc = anotherouter(); calls the anotherouter function and stores the returned anotherinner function in the variable myfunc.
+                                     //This myfunc variable now holds a reference to the anotherinner function, which still has access to the name variable due to the closure.
+
+    myfunc();                        //When myfunc() is called, it executes the anotherinner function, which logs the value of name to the console.
+                                    //Even though anotherouter has finished executing, the name variable is still accessible within anotherinner.
+    
+</script>
+<script>
+     function clickHandler(color){
+            // document.body.style.backgroundColor = `${color}`
+
+             function display(){
+                document.body.style.backgroundColor = `${color}`
+            }
+            //  return display();   // we can not use this because display is immediately called within clickhandler,this means that background color is change immediately when click handler is executed.
+            return display;         // Returns a reference to the display function itself,The function can be stored and called later.=====
+        }
+
+        document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")  
+
+
+
+        //Use Cases of return display and return display():
+        // Use return display when you need to pass the function around for later use, such as setting it as an event handler.
+       // Use return display() when you want to immediately execute the function and use its return value right away.
+</script>
+</html>

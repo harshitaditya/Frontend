@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlimited Background color</title>
+</head>
+<body>
+   <h1>Start should change the Background color every second</h1>
+   <img src="https://t4.ftcdn.net/jpg/03/03/62/45/240_F_303624505_u0bFT1Rnoj8CMUSs8wMCwoKlnWlh5Jiq.jpg">
+   <button id="start">Start</button>
+   <button id="stop">Stop</button>
+    
+</body>
+<script>
+    const randomcolor=function(){
+        const hex="0123456789ABCDEF";
+        let color="#";
+        for(let i=0;i<6;i++){
+            color+=hex[Math.floor(Math.random()*16)];
+        }
+        return color;
+    }
+    const changecolor=function(){
+        document.body.style.backgroundColor=randomcolor();
+    }
+    let intervalid;
+    document.querySelector('#start').addEventListener("click",function(e){
+        if(!intervalid){                      //for better practise otherwise the code will run perfectly.
+             intervalid=setInterval(changecolor,1000);
+        }
+    })
+    document.querySelector('#stop').addEventListener("click",function(e){
+        clearTimeout(intervalid);
+        intervalid=null;                     //for betterment of writing code.
+    })
+   
+</script>
+
+</html>

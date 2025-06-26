@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button clicked</button>
+    
+</body>
+<script>
+    class react{
+        constructor(){
+            this.library="React";
+            this.server="localhost//:300";
+            document
+            .querySelector('button')
+            .addEventListener('click',this.handleclick.bind(this))    // When you use this.handleClick.bind(this), you're creating a new function with this explicitly bound to the instance of the React class. 
+                                                                    //This ensures that when the button is clicked and the handleClick method is called as an event handler, this inside the method will refer to the React instance.
+                                                                    // In this case, this.handleClick is passed directly as a callback to addEventListener. When the button is clicked, this inside handleClick may not refer to the React instance, 
+                                                                    // depending on how the event handler is called. This could lead to bugs, especially if you're trying to access properties or methods on the React instance.
+        }
+
+        handleclick(){
+            console.log("button clicked");
+            console.log(this.server);
+
+        }
+    }
+    const app=new react();
+</script>
+</html>

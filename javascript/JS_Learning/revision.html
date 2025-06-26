@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+    <body>
+        <h1>Today We are Learning Javascript</h1>
+        <button onclick="myFunction()">click here</button>
+        <p id="ele"></p>
+        
+        <script>
+            function myFunction(){
+            let text;
+            if(confirm("Press a button")){
+                text="You entered the Ok button";
+
+            }
+            else{
+                text="You entered the cancel button";
+            }
+            document.getElementById("ele").innerHTML=text;
+        }
+            
+        </script>
+
+    </body>
+</html>

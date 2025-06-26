@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle</title>
+</head>
+<body id="changecolor">
+    <h3>A toggle is a user interface element that allows switching between two states, such as on and off, enabled and disabled, or show and hide. It is a common feature in web and software development, and understanding it is useful for implementing interactivity in web pages or applications.</h3>
+    <button id="button" style="width:50px">Button</button>
+</body>
+<script>
+    const changecolor=document.getElementById('changecolor');
+    const button=document.getElementById('button');
+    let color=['red','yellow','green','yellow','black']
+    let currentindex=0;
+    button.addEventListener('click',()=>{
+        currentindex=(currentindex+1)%color.length;
+        changecolor.style.backgroundColor=color[currentindex];
+
+    })
+</script>
+</html>

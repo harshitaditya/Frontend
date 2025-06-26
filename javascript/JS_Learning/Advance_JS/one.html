@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <img src="https://avatars.githubusercontent.com/u/11613311?v=4" alt="hiteshchoudhary" height="250px" weight="250px">
+
+    <div class="pic" style="background-color: antiquewhite;height: 25px;width: 50px;">
+        
+    </div>
+    
+</body>
+<script>
+    // const requesturl='https://api.github.com/users/hiteshchoudhary';
+    // const xhr=new XMLHttpRequest();
+    // xhr.open('GET',requesturl);
+    // xhr.onreadystatechange=function(){
+    //     console.log(xhr.readyState);
+        
+    //     if(xhr.readyState===4){
+    //         const data=JSON.parse(this.responseText)
+    //         // console.log(data)   //here the data type of string but it is string so we convert it into json and json is object.
+    //         console.log(data.location);
+    //         const follower= document.querySelector('.pic');
+    //         follower.innerHTML=data.followers;
+    //     }
+        
+
+
+    // }
+  
+    
+    // xhr.send();
+
+    const requesturl='https://api.github.com/users/hiteshchoudhary';
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET',requesturl);
+    // console.log(xhr.readyState);
+    const followers=document.querySelector('.pic')
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            const data=JSON.parse(this.responseText);
+            // console.log(data.followers)
+            followers.innerHTML=data.followers;
+        }
+
+    }
+  xhr.send();
+
+    
+
+
+
+
+</script>
+</html>

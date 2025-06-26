@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event handler</title>
+</head>
+<body>
+    <h1>Learn javascript with me</h1>
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+//     const changetext=function(){
+//     console.log("Aditya",Date.now());
+//     }
+//     let changeMe;
+   
+//     document.querySelector('#start').addEventListener('click',function(){
+//        changeMe=setInterval(changetext,2000);
+        
+
+//     })
+
+
+//    document.querySelector('#stop').addEventListener('click',function(){
+//     clearInterval(changeMe);
+       
+//    })
+
+const content=document.querySelector('h1');
+const start=document.querySelector('#start');
+const stop=document.querySelector('#stop');
+
+let repeatcontent=document.createElement('h2');
+content.appendChild(repeatcontent);
+let intervalid;
+
+start.addEventListener('click',()=>{
+    intervalid= setInterval(()=>{
+    repeatcontent.innerHTML="Hi!! my name is Aditya"
+},2000)
+
+})
+
+stop.addEventListener('click',()=>{
+    clearInterval(intervalid)
+})
+
+
+
+
+
+
+  
+   
+</script>
+</html>

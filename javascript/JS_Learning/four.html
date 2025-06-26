@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+<body style="background-color:black;color: white;">
+    <div class="language">
+        <li>Javascript</li>
+    </div>
+    
+</body>
+<script>
+    function addlanguage(langname){
+    const list=document.createElement('li') ;
+    list.innerText=`${langname}`;       //if we use innerhtml then we have to traverse the whole DOM tree.
+    document.querySelector('.language').appendChild(list);
+     }
+     addlanguage("Python");
+     addlanguage("Java");
+     addlanguage("CPP");
+
+
+     function addoptilang(langname){   //it is optimize function to add list.
+    const li=document.createElement('li') ;
+    li.appendChild(document.createTextNode(langname))         //here we just create a textnode and add it using queryselector either it is class or id.
+    document.querySelector('.language').appendChild(li);
+     }
+     addoptilang("Typescript");
+
+
+     //Edit
+    const secondlang=document.querySelector('li:nth-child(2')
+    // console.log(secondlang);
+    // secondlang.innerText="golang";
+    const newli=document.createElement('li');
+    newli.textContent="MOJO"
+    secondlang.replaceWith(newli);
+
+    const firstlang=document.querySelector("li:first-child");
+    // console.log(firstlang);
+    firstlang.outerHTML="<li>Typescript</li>";
+
+    // Remove
+    const lastlang=document.querySelector("li:last-child");
+    lastlang.remove();
+     
+   
+
+     </script>
+</html>

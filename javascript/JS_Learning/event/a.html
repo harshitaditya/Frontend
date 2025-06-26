@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.querySelector('#owl').onclick=function(){
+    //     alert("owl clicked");
+    // }
+
+    // Add Eventlistener
+    // document.querySelector('#owl').addEventListener('click',function(e){
+    //     // console.log(e);   //check  PointerEvent like target,id,timestamp etc
+    //     alert("owl clicked")
+
+    // })
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+
+    // ******************event propogation******************************
+
+    // Event Propagation determines in which order the elements receive the event. 
+    // There are two ways to handle this event propagation order of HTML DOM is Event Bubbling and Event Capturing.
+
+
+
+    //******************Event bubbling*********************
+    // document.querySelector('#images').addEventListener('click',function(e){
+    //     console.log("clicked inside the ul");
+    // },false)     //by default it is false
+
+    // document.querySelector('#owl').addEventListener('click',function(e){
+    //     console.log("clicked owl");
+    // },false)
+
+
+    // When an event happens on a component, it first runs the event handler on it, then on its parent component, 
+    // then all the way up on other ancestors’ components.
+    //  By default, all event handles through this order from center component event to outermost component event.
+
+
+
+
+
+
+    //*********************************Event capturing**************************
+    // document.querySelector('#images').addEventListener('click',function(e){
+    //     console.log("clicked inside the ul");
+    // },true)
+
+    // document.querySelector('#owl').addEventListener('click',function(e){
+    //     console.log("clicked owl");
+    // },true)   //if we use the event cpaturing then we have change the bydefault value to true from false.
+
+    // It is the opposite of bubbling. The event handler is first on its parent component and then on the component where it was actually wanted to fire that event handler. In short, 
+    // it means that the event is first captured by the outermost element and propagated to the inner elements. It is also called trickle down.
+
+    // study link:- https://www.geeksforgeeks.org/what-is-event-propagation-capturing-bubbling/
+
+
+
+    // we can also stop propogation
+
+    // document.querySelector('#images').addEventListener('click',function(e){
+    //     console.log("clicked inside the ul");
+    // },false)
+
+    // document.querySelector('#owl').addEventListener('click',function(e){
+    //     console.log("clicked owl");
+    //     e.stopPropagation();      // using this it can not propogate. it is bubbling if it's value is true then it can not propogate in capturing manner.
+    // },false)  
+
+
+//    // uses of preventDefault():
+
+    
+      document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault();      //The preventDefault() method cancels the event if it is cancelable,
+        // e.stopPropagation()      //using this it will not propogate.and it is bubbling event because it have false value.
+        console.log("google clicked");
+    }, false)
+
+
+
+//Task is to remove image
+
+// document.querySelector('#images').addEventListener('click',function(e){
+//     console.log(e.target.parentNode);
+//     console.log(e.target.tagName);    // here tag name is IMG
+//     // console.log(e.target.id);      // we can also use image id to remove but it will maake the code to lengthy we have to assign the id individualy.
+//     if(e.target.tagName==='IMG'){
+//     const removeit=e.target.parentNode;
+//     removeit.remove();
+//     }
+// })
+
+
+
+// const owl=document.querySelector('#owl')
+// // owl.onclick=()=>{
+// //         alert("owl clicked");
+// //     }
+
+// owl.addEventListener('click',function(e){
+//     console.log(e);
+//     alert("owl clicked")
+
+// })
+
+document.querySelector('#images').addEventListener('click',function(e){
+    console.log(e.target.parentNode)
+    console.log(e.target.tagName)
+    if(e.target.tagName=='IMG'){
+        const image=e.target.parentNode
+        image.remove();
+    }
+})
+
+
+
+
+  
+</script>
+
+</html>
